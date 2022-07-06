@@ -60,8 +60,8 @@ const LandingPage = function () {
 
   return (
     <div className="landing-page wrapper">
-      <h3>Already have an account?</h3>
       <div className="login-container">
+      <h3>Already have an account?</h3>
         <label
           className="sr-only"
           aria-label="Enter your email"
@@ -104,6 +104,7 @@ const LandingPage = function () {
         </Button>
       </div>
       <div className="create-account-container">
+        <h3>Create new account?</h3>
         <Link to="/signup">
           <Button
             sx={{ margin: "10px 0", backgroundColor: "green" }}
