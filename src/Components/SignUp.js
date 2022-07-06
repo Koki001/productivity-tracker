@@ -59,10 +59,9 @@ const SignUp = function () {
           displayName: createName,
         }).then(function () {
           const db = getDatabase();
-          set(ref(db, user.user.uid), {
+          set(ref(db, user.user.uid + "/user"), {
             name: user.user.displayName,
             email: user.user.email,
-            data: "TEST",
           }).then(function () {
             Swal.fire({
               icon: "success",
