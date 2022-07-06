@@ -1,0 +1,16 @@
+.logged-as {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    margin-right: 20px;
+  }
+  button {
+    background-color: red;
+    font-size: 0.6rem;
+    font-weight: bold;
+  }
+}
+.home-container {
+  height: 100%;
+}

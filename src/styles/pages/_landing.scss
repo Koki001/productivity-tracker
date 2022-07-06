@@ -1,0 +1,54 @@
+.app-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.landing-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.login-container {
+  width: 80%;
+  min-width: 270px;
+  max-width: 370px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+.signup-container {
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  button {
+    width: 100%;
+  }
+}
+.create-account-container {
+  width: 80%;
+  min-width: 270px;
+  max-width: 370px;
+  button {
+    width: 100%;
+  }
+}
+.create-account-inner {
+  width: 80%;
+  min-width: 270px;
+  max-width: 370px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+  .fieldWarntrue {
+    background-color: rgba(255, 0, 0, 0.233);
+  }
+}
+.css-i4bv87-MuiSvgIcon-root {
+  cursor: pointer;
+}
