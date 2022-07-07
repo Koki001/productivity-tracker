@@ -49,31 +49,46 @@ const ToDo = function () {
   const handleCompleteTask = function (e) {
     let target = e.target.id;
     let text = [];
+    let check = false;
     fullData.forEach(function (ev) {
       if (ev.key === target) {
         text.push(ev.name);
       }
-    });
-    const database = getDatabase(firebaseApp);
-    Swal.fire({
-      title: "Mark task as completed?",
-      text: `Task: ${text[0]}`,
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, it's complete",
-      cancelButtonText: "No, go back",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        update(ref(database, `${currentUser.uid}/to-do/list/${e.target.id}`), {
-          completed: true,
-          completedAt: format(new Date(), "MMM do yyyy h:mm aaaa"),
-        });
-      } else {
-        return;
+      if (ev.key === target && ev.completed === true) {
+        check = true;
       }
     });
+    if (check === true) {
+      Swal.fire({
+        title: "Task already completed",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Ok",
+      });
+    } else {
+      const database = getDatabase(firebaseApp);
+      Swal.fire({
+        title: "Mark task as completed?",
+        text: `Task: ${text[0]}`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, it's complete",
+        cancelButtonText: "No, go back",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          update(
+            ref(database, `${currentUser.uid}/to-do/list/${e.target.id}`),
+            {
+              completed: true,
+              completedAt: format(new Date(), "MMM do yyyy h:mm aaaa"),
+            }
+          );
+        } else {
+          return;
+        }
+      });
+    }
   };
   const handleRemoveTask = function (e) {
     const database = getDatabase(firebaseApp);
