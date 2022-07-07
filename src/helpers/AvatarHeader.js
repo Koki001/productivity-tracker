@@ -60,7 +60,7 @@ const AvatarHeader = function () {
   useEffect(
     function () {
       if (currentUser?.uid) {
-        getDownloadURL(sRef(storage, currentUser.uid + "/profile-photo")).then(
+        getDownloadURL(sRef(storage, currentUser?.uid + "/profile-photo")).then(
           function (url) {
             setImageURL(url);
           }
@@ -84,7 +84,7 @@ const AvatarHeader = function () {
         <p>{currentUser?.displayName}</p>
         <Avatar
           onClick={handleAvatarSettings}
-          alt={currentUser.displayName}
+          alt={currentUser?.displayName}
           src={imageURL}
         />
         <Dialog open={open} onClose={handleClose}>
