@@ -355,7 +355,7 @@ html {
   align-items: center;
   width: 95%;
   position: fixed;
-  top: 0;
+  top: 20px;
 }
 .logged-as p {
   margin-right: 20px;
@@ -379,9 +379,12 @@ html {
   justify-content: center;
   align-items: center;
 }
-
-.css-2s90m6-MuiAvatar-root {
+.user-info div {
   cursor: pointer;
+  transition: all 0.3s;
+}
+.user-info div:hover {
+  transform: scale(1.5);
 }
 
 .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
@@ -397,7 +400,121 @@ html {
 }
 
 .app-choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.app-choices button {
+  height: 250px;
+  width: 250px;
+}
+
+.quick-links li {
+  margin: 0 3px;
+}
+.quick-links li p {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+.quick-links li a {
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.to-do-container {
+  height: 100%;
   display: flex;
+  justify-content: center;
+}
+
+.add-chore-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: 1rem;
+}
+
+.to-do-subtitle {
+  margin-bottom: 30px;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.to-do-subtitle svg {
+  cursor: pointer;
+}
+
+.to-do-content {
+  padding-top: 15%;
+  min-width: 500px;
+}
+.to-do-content ul {
+  overflow: hidden;
+  overflow-y: scroll;
+  list-style: none;
+  padding: 0 15px;
+  margin: 50px 0;
+  min-height: 50px;
+  max-height: 500px;
+  max-width: 700px;
+}
+.to-do-content ul .add-delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.to-do-content ul .add-delete svg {
+  width: 50%;
+}
+.to-do-content ul .add-delete path {
+  pointer-events: none;
+}
+.to-do-content ul .add-delete span {
+  margin: 0 5px;
+}
+.to-do-content ul #list-item-accordion {
+  width: 80%;
+  border: none;
+  box-shadow: none;
+}
+.to-do-content ul #panel1d-header {
+  flex-direction: row-reverse;
+  padding: 0;
+}
+.to-do-content ul #panel1d-content div {
+  padding: 0;
+  border-bottom: 1px solid black;
+}
+.to-do-content ul #panel1d-content p {
+  font-size: 0.8rem;
+  text-align: left;
+}
+.to-do-content ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.to-do-content ul li p {
+  margin-left: 20px;
+}
+.to-do-content ul li p span {
+  padding: 0;
+}
+.to-do-content ul li p .inside-span {
+  margin: 0 10px;
+}
+.to-do-content #list-item-accordion .completed-task {
+  position: relative;
+  color: rgba(0, 0, 0, 0.5);
+}
+.to-do-content #list-item-accordion .completed-task::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  border-bottom: 2px solid green;
+  width: 90%;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -25,7 +25,7 @@ const LandingPage = function () {
       );
       Swal.fire({
         text: `Welcome back, ${user.user.displayName} :)`,
-        timer: 1000,
+        timer: 700,
       }).then(function () {
         navigate("/home");
       });
@@ -33,7 +33,7 @@ const LandingPage = function () {
       if (logInEmail === "" || logInPassword === "") {
         Swal.fire({
           icon: "error",
-          text: "Please fill out your email and password",
+          text: "Please fill out your e-mail and password",
         });
       } else if (error.message === "Firebase: Error (auth/user-not-found).") {
         Swal.fire({
@@ -44,6 +44,11 @@ const LandingPage = function () {
         Swal.fire({
           icon: "error",
           text: "Wrong password",
+        });
+      } else if (error.message === "Firebase: Error (auth/invalid-email).") {
+        Swal.fire({
+          icon: "error",
+          text: "The e-mail entered is invalid",
         });
       }
     }
@@ -60,8 +65,10 @@ const LandingPage = function () {
 
   return (
     <div className="landing-page wrapper">
+      <h1>PlanPal</h1>
       <div className="login-container">
-      <h3>Already have an account?</h3>
+        <h3>Already have an account?</h3>
+
         <label
           className="sr-only"
           aria-label="Enter your email"
@@ -98,7 +105,6 @@ const LandingPage = function () {
             ),
           }}
         />
-
         <Button sx={{ margin: "10px 0" }} onClick={login} variant="contained">
           Log In
         </Button>

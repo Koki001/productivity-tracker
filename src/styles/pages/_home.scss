@@ -4,7 +4,7 @@
   align-items: center;
   width: 95%;
   position: fixed;
-  top: 0;
+  top: 20px;
   p {
     margin-right: 20px;
   }
@@ -25,9 +25,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.css-2s90m6-MuiAvatar-root {
-  cursor: pointer;
+  div {
+    cursor: pointer;
+    transition: all 0.3s;
+    &:hover {
+      transform: scale(1.5);
+    }
+  }
 }
 .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
   position: relative;
@@ -40,5 +44,22 @@
   right: 0;
 }
 .app-choices {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  button {
+    height: 250px;
+    width: 250px;
+  }
+}
+.quick-links li {
+  margin: 0 3px;
+  p {
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  a {
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
 }
