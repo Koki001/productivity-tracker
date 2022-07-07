@@ -451,7 +451,7 @@ html {
 }
 .to-do-content ul {
   overflow: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   list-style: none;
   padding: 0 15px;
   margin: 50px 0;
