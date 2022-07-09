@@ -14,6 +14,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: rgb(173, 181, 189);
+  background: linear-gradient(
+    90deg,
+    rgba(173, 181, 189, 1) 0%,
+    rgba(222, 226, 230, 1) 50%,
+    rgba(173, 181, 189, 1) 100%
+  );
 }
 
 .wrapper {

@@ -1,10 +1,30 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .logged-as {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 95%;
+  height: 100px;
   position: fixed;
-  top: 20px;
+  top: 0;
+  .MuiBreadcrumbs-li {
+    transition: all 0.3s;
+  }
+  .MuiBreadcrumbs-li:hover {
+    transform: scale(1.2);
+    color: black;
+  }
+  li a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
   p {
     margin-right: 20px;
   }
@@ -27,9 +47,12 @@
   align-items: center;
   div {
     cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    width: 70px;
+    height: 70px;
     transition: all 0.3s;
     &:hover {
-      transform: scale(1.5);
+      transform: scale(1.1);
     }
   }
 }
@@ -50,6 +73,7 @@
   button {
     height: 250px;
     width: 250px;
+    background-color: #e9ecef;
   }
 }
 .quick-links li {

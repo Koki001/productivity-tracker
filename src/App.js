@@ -21,7 +21,6 @@ function App() {
       setLoggedIn(current);
     });
   }, []);
-
   return (
     <div className="app-container">
       {loggedIn !== null && <AvatarHeader />}

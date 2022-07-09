@@ -2,7 +2,8 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  // align-items: center;
+  align-items: flex-start;
+  padding-top: 10%;
 }
 
 .add-chore-container {
@@ -23,17 +24,28 @@
   }
 }
 .to-do-content {
-  padding-top: 15%;
   min-width: 500px;
+  h2 {
+    margin-top: 0;
+  }
   ul {
     overflow: hidden;
     overflow-y: auto;
     list-style: none;
-    padding: 0 15px;
-    margin: 50px 0;
+    padding: 5px 15px;
+    margin: 50px 0 20px 0;
     min-height: 50px;
-    max-height: 500px;
+    max-height: 450px;
     max-width: 700px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    #edit-chore {
+      cursor: pointer;
+      margin-right: 10px;
+      path {
+        pointer-events: none;
+      }
+    }
     .add-delete {
       svg {
         width: 50%;
@@ -52,6 +64,10 @@
       width: 80%;
       border: none;
       box-shadow: none;
+      background-color: transparent;
+      svg {
+        cursor: pointer;
+      }
     }
     #panel1d-header {
       flex-direction: row-reverse;
@@ -68,9 +84,11 @@
       }
     }
     li {
+      position: relative;
       display: flex;
       justify-content: space-between;
       align-items: center;
+
       p {
         margin-left: 20px;
         span {
@@ -91,7 +109,7 @@
       top: 50%;
       left: 10%;
       border-bottom: 2px solid green;
-      width: 90%;
+      width: 85%;
     }
   }
 }

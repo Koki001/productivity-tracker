@@ -20,15 +20,26 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { format } from "date-fns";
-import CircularProgress from "@mui/material/CircularProgress";
+import { format, set } from "date-fns";
 import Swal from "sweetalert2";
+import EditTwoToneIcon from "@mui/icons-material/EditTwoTone";
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import Button from "@mui/material/Button";
 
 const ToDo = function () {
   const [newChore, setNewChore] = useState("");
   const [currentUser, setCurrentUser] = useState({});
   const [fetchDb, setFetchDb] = useState(true);
   const [fullData, setFullData] = useState([]);
+  const [openEdit, setOpenEdit] = useState(false);
+  const [currentEdit, setCurrentEdit] = useState("");
+  const [updatedChore, setUpdatedChore] = useState("");
 
   const handleNewChore = function (e) {
     setNewChore(e.target.value);
@@ -120,6 +131,24 @@ const ToDo = function () {
       }
     });
   };
+  const handleEditChore = function (e) {
+    setOpenEdit(true);
+    setCurrentEdit(e.target.classList[2]);
+  };
+  const handleClose = function () {
+    setOpenEdit(false);
+  };
+  const handleUpdatedChore = function (e) {
+    setUpdatedChore(e.target.value);
+  };
+  const handleCloseConfirm = function () {
+    setOpenEdit(false);
+    const database = getDatabase(firebaseApp);
+    update(ref(database, `${currentUser.uid}/to-do/list/${currentEdit}`), {
+      description: updatedChore,
+    });
+    setFetchDb(!fetchDb);
+  };
   useEffect(
     function () {
       const database = getDatabase(firebaseApp);
@@ -141,7 +170,6 @@ const ToDo = function () {
     },
     [fetchDb]
   );
-
   useEffect(
     function () {
       setFetchDb(!fetchDb);
@@ -154,13 +182,38 @@ const ToDo = function () {
 
   return (
     <div className="to-do-container wrapper">
+      <Dialog open={openEdit} onClose={handleClose}>
+        <DialogContent sx={{ width: "100%" }}>
+          <DialogContentText>
+            Edit your task in the field below.
+          </DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            type="text"
+            variant="standard"
+            onChange={handleUpdatedChore}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleCloseConfirm}>Confirm</Button>
+        </DialogActions>
+      </Dialog>
       <div className="to-do-content">
         <h2>TO DO LIST</h2>
         <ul>
           {fullData[0] !== undefined &&
-            fullData.map(function (item, i) {
+            fullData.map(function (item) {
               return (
                 <li key={item.key}>
+                  <EditTwoToneIcon
+                    fontSize="small"
+                    id="edit-chore"
+                    onClick={handleEditChore}
+                    className={item.key}
+                  />
                   <Accordion disableGutters id="list-item-accordion">
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
@@ -207,6 +260,11 @@ const ToDo = function () {
             variant="standard"
             onChange={handleNewChore}
             value={newChore}
+            onKeyDown={function (e) {
+              if (e.code === "Enter") {
+                handleAddChore();
+              }
+            }}
           />
           <Fab
             onClick={handleAddChore}

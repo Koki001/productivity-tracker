@@ -25,7 +25,10 @@ const LandingPage = function () {
       );
       Swal.fire({
         text: `Welcome back, ${user.user.displayName} :)`,
-        timer: 700,
+        position: "top-start",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1000,
       }).then(function () {
         navigate("/home");
       });

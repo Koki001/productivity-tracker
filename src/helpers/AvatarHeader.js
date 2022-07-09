@@ -1,7 +1,7 @@
 import { auth, firebaseApp } from "../firebase";
 import { getDatabase, ref, get } from "firebase/database";
 import { useLocation, useNavigate } from "react-router-dom";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut, updateProfile } from "firebase/auth";
 import { useEffect, useState } from "react";
 import Dialog from "@mui/material/Dialog";
 import Button from "@mui/material/Button";
@@ -44,7 +44,6 @@ const AvatarHeader = function () {
     },
     [currentUser, imageURL]
   );
-
   const handleAvatarSettings = function () {
     setOpen(true);
   };
@@ -53,21 +52,31 @@ const AvatarHeader = function () {
   };
   const handleImageUpload = function (e) {
     const storageRef = sRef(storage, currentUser.uid + "/profile-photo");
-    uploadBytes(storageRef, e.target.files[0]).then(() => {
-      handleClose();
+    uploadBytes(storageRef, e.target.files[0]).then((url) => {
+      updateProfile(auth.currentUser, {
+        photoURL: url.metadata.fullPath,
+      }).then(function () {
+        getDownloadURL(sRef(storage, currentUser.uid + "/profile-photo"))
+          .then(function (url) {
+            setImageURL(url);
+          })
+          .then(function () {
+            handleClose();
+          });
+      });
     });
   };
   useEffect(
     function () {
-      if (currentUser?.uid) {
-        getDownloadURL(sRef(storage, currentUser?.uid + "/profile-photo")).then(
+      if (currentUser.photoURL) {
+        getDownloadURL(sRef(storage, currentUser.uid + "/profile-photo")).then(
           function (url) {
             setImageURL(url);
           }
         );
       }
     },
-    [handleClose]
+    [currentUser]
   );
   const quickLinkHome = function (e) {
     e.preventDefault();
@@ -81,7 +90,7 @@ const AvatarHeader = function () {
   return (
     <div className="logged-as">
       <div className="user-info">
-        <p>{currentUser?.displayName}</p>
+        {/* <p>{currentUser?.displayName}</p> */}
         <Avatar
           onClick={handleAvatarSettings}
           alt={currentUser?.displayName}

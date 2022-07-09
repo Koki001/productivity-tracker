@@ -269,6 +269,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: rgb(173, 181, 189);
+  background: linear-gradient(90deg, rgb(173, 181, 189) 0%, rgb(222, 226, 230) 50%, rgb(173, 181, 189) 100%);
 }
 
 .wrapper {
@@ -349,13 +351,34 @@ html {
   cursor: pointer;
 }
 
+.app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .logged-as {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 95%;
+  height: 100px;
   position: fixed;
-  top: 20px;
+  top: 0;
+}
+.logged-as .MuiBreadcrumbs-li {
+  transition: all 0.3s;
+}
+.logged-as .MuiBreadcrumbs-li:hover {
+  transform: scale(1.2);
+  color: black;
+}
+.logged-as li a {
+  text-decoration: none;
+}
+.logged-as li a:hover {
+  text-decoration: none;
 }
 .logged-as p {
   margin-right: 20px;
@@ -381,10 +404,13 @@ html {
 }
 .user-info div {
   cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  width: 70px;
+  height: 70px;
   transition: all 0.3s;
 }
 .user-info div:hover {
-  transform: scale(1.5);
+  transform: scale(1.1);
 }
 
 .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
@@ -407,6 +433,7 @@ html {
 .app-choices button {
   height: 250px;
   width: 250px;
+  background-color: #e9ecef;
 }
 
 .quick-links li {
@@ -425,6 +452,8 @@ html {
   height: 100%;
   display: flex;
   justify-content: center;
+  align-items: flex-start;
+  padding-top: 10%;
 }
 
 .add-chore-container {
@@ -447,18 +476,29 @@ html {
 }
 
 .to-do-content {
-  padding-top: 15%;
   min-width: 500px;
+}
+.to-do-content h2 {
+  margin-top: 0;
 }
 .to-do-content ul {
   overflow: hidden;
   overflow-y: auto;
   list-style: none;
-  padding: 0 15px;
-  margin: 50px 0;
+  padding: 5px 15px;
+  margin: 50px 0 20px 0;
   min-height: 50px;
-  max-height: 500px;
+  max-height: 450px;
   max-width: 700px;
+  background-color: #e9ecef;
+  border-radius: 5px;
+}
+.to-do-content ul #edit-chore {
+  cursor: pointer;
+  margin-right: 10px;
+}
+.to-do-content ul #edit-chore path {
+  pointer-events: none;
 }
 .to-do-content ul .add-delete {
   display: flex;
@@ -478,6 +518,10 @@ html {
   width: 80%;
   border: none;
   box-shadow: none;
+  background-color: transparent;
+}
+.to-do-content ul #list-item-accordion svg {
+  cursor: pointer;
 }
 .to-do-content ul #panel1d-header {
   flex-direction: row-reverse;
@@ -492,6 +536,7 @@ html {
   text-align: left;
 }
 .to-do-content ul li {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -515,7 +560,7 @@ html {
   top: 50%;
   left: 10%;
   border-bottom: 2px solid green;
-  width: 90%;
+  width: 85%;
 }
 
 /*# sourceMappingURL=styles.css.map */
