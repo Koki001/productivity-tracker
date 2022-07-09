@@ -495,7 +495,11 @@ html {
 }
 .to-do-content ul #edit-chore {
   cursor: pointer;
+  transition: all 0.2s;
   margin-right: 10px;
+}
+.to-do-content ul #edit-chore:hover {
+  transform: scale(1.2);
 }
 .to-do-content ul #edit-chore path {
   pointer-events: none;
@@ -507,6 +511,10 @@ html {
 }
 .to-do-content ul .add-delete svg {
   width: 50%;
+  transition: all 0.2s;
+}
+.to-do-content ul .add-delete svg:hover {
+  transform: scale(1.2);
 }
 .to-do-content ul .add-delete path {
   pointer-events: none;

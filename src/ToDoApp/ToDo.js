@@ -1,7 +1,7 @@
 import TextField from "@mui/material/TextField";
 import AddIcon from "@mui/icons-material/Add";
 import Fab from "@mui/material/Fab";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { firebaseApp, auth } from "../firebase";
 import {
   getDatabase,
@@ -40,13 +40,14 @@ const ToDo = function () {
   const [openEdit, setOpenEdit] = useState(false);
   const [currentEdit, setCurrentEdit] = useState("");
   const [updatedChore, setUpdatedChore] = useState("");
-
+  const ulRef = useRef();
   const handleNewChore = function (e) {
     setNewChore(e.target.value);
   };
   const handleAddChore = function () {
     const database = getDatabase(firebaseApp);
     setFetchDb(!fetchDb);
+
     if (newChore !== "") {
       push(ref(database, `${currentUser.uid}/to-do/list`), {
         description: `${newChore}`,
@@ -54,6 +55,11 @@ const ToDo = function () {
         completed: false,
       }).then(function () {
         setNewChore("");
+        if (ulRef.current) {
+          ulRef.current.lastElementChild.scrollIntoView({
+            behaviour: "smooth",
+          });
+        }
       });
     }
   };
@@ -203,7 +209,7 @@ const ToDo = function () {
       </Dialog>
       <div className="to-do-content">
         <h2>TO DO LIST</h2>
-        <ul>
+        <ul ref={ulRef}>
           {fullData[0] !== undefined &&
             fullData.map(function (item) {
               return (

@@ -41,6 +41,10 @@
     border-radius: 5px;
     #edit-chore {
       cursor: pointer;
+      transition: all 0.2s;
+      &:hover {
+        transform: scale(1.2);
+      }
       margin-right: 10px;
       path {
         pointer-events: none;
@@ -49,6 +53,10 @@
     .add-delete {
       svg {
         width: 50%;
+                transition: all 0.2s;
+        &:hover {
+          transform: scale(1.2);
+        }
       }
       path {
         pointer-events: none;
