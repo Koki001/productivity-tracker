@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 const DateDisplay = function () {
   const [timeUpdate, setTimeUpdate] = useState(true);
-  const today = format(new Date(), "MMM do yyyy h:mmaaaa");
+  const today = format(new Date(), "MMM do yyyy h:mm aaaa");
 
   useEffect(
     function () {
@@ -17,11 +17,9 @@ const DateDisplay = function () {
   );
 
   return (
-    <div className="date-container">
-      <h2>
-        <span>{today}</span>
-      </h2>
-    </div>
+    <h2 className="date-container">
+      <span>{today}</span>
+    </h2>
   );
 };
 

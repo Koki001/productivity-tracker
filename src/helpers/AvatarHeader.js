@@ -86,6 +86,10 @@ const AvatarHeader = function () {
     e.preventDefault();
     navigate("/home/to-do");
   };
+    const quickLinkSpaceApp = function (e) {
+      e.preventDefault();
+      navigate("/home/space-app");
+    };
   // console.log(location.pathname)
   return (
     <div className="logged-as">
@@ -142,8 +146,8 @@ const AvatarHeader = function () {
           >
             To-Do
           </Link>
-          <Link underline="hover" color="inherit">
-            Coming Soon
+          <Link onClick={quickLinkSpaceApp} underline="hover" color="inherit">
+            Space App
           </Link>
           <Link underline="hover" color="inherit">
             Coming Soon

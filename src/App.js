@@ -7,6 +7,7 @@ import ToDo from "./ToDoApp/ToDo";
 import { auth } from "./firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import AvatarHeader from "./helpers/AvatarHeader";
+import SpaceApp from "./SpaceApp/SpaceApp";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(null);
@@ -23,12 +24,13 @@ function App() {
   }, []);
   return (
     <div className="app-container">
-      {loggedIn !== null && <AvatarHeader />}
+      {loggedIn?.uid && <AvatarHeader />}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/home" element={<Home />} />
         <Route path="/home/to-do" element={<ToDo />} />
+        <Route path="/home/space-app" element={<SpaceApp />} />
       </Routes>
     </div>
   );

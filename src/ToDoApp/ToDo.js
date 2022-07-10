@@ -31,6 +31,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
+import DateDisplay from "../helpers/DateDisplay"
 
 const ToDo = function () {
   const [newChore, setNewChore] = useState("");
@@ -208,7 +209,8 @@ const ToDo = function () {
         </DialogActions>
       </Dialog>
       <div className="to-do-content">
-        <h2>TO DO LIST</h2>
+        <h2 className="to-do-title">TO DO LIST</h2>
+        <DateDisplay />
         <ul ref={ulRef}>
           {fullData[0] !== undefined &&
             fullData.map(function (item) {

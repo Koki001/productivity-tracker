@@ -266,6 +266,7 @@ body {
 
 #root {
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -478,8 +479,14 @@ html {
 .to-do-content {
   min-width: 500px;
 }
-.to-do-content h2 {
-  margin-top: 0;
+.to-do-content .to-do-title {
+  margin: 0;
+  font-family: "Trispace", sans-serif;
+  font-size: 2rem;
+}
+.to-do-content .date-container {
+  font-size: 1rem;
+  margin-top: 5px;
 }
 .to-do-content ul {
   overflow: hidden;
@@ -535,6 +542,9 @@ html {
   flex-direction: row-reverse;
   padding: 0;
 }
+.to-do-content ul #panel1d-header p {
+  text-align: left;
+}
 .to-do-content ul #panel1d-content div {
   padding: 0;
   border-bottom: 1px solid black;
@@ -569,6 +579,34 @@ html {
   left: 10%;
   border-bottom: 2px solid green;
   width: 85%;
+}
+
+.space-app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  padding-top: 10%;
+}
+
+.solar-system-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.solar-system-container p {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  width: 30%;
+}
+
+.planet {
+  width: 25%;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,24 @@
+.space-app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  padding-top: 10%;
+}
+.solar-system-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
+img {
+  width: 30%;
+}
+.planet {
+  width: calc(100% / 4);
+}
