@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import OurSolarSystem from "../Components/OurSolarSystem";
+import Button from "@mui/material/Button";
+import GeneralSpace from "../Components/GeneralSpace";
 
 const SpaceApp = function () {
   const [planetData, setPlanetData] = useState([]);
   const [solarSystem, setSolarSystem] = useState([]);
+  const [goToSolar, setGoToSolar] = useState(false);
+  const [goToGeneral, setGoToGeneral] = useState(false);
 
   const kelToCel = function (num) {
     return num - 273.15;
@@ -22,7 +27,6 @@ const SpaceApp = function () {
       });
     }
   }, []);
-  console.log(solarSystem);
   useEffect(
     function () {
       if (planetData) {
@@ -47,19 +51,27 @@ const SpaceApp = function () {
     },
     [planetData]
   );
+  const handleSolar = function () {
+    setGoToSolar(true);
+    setGoToGeneral(false)
+  };
+  const handleGeneralSpace = function () {
+    setGoToGeneral(true);
+    setGoToSolar(false)
+  };
   return (
-    <div className="space-app-container wrapper">
-      <div className="solar-system-container">
-        {solarSystem !== [] &&
-          solarSystem.map(function (planet, i) {
-            return (
-              <div key={planet.name + i} className="planet">
-                <h2>{planet.englishName}</h2>
-                <img src={`/assets/solarSystem/${planet.englishName}.png`} alt="" />
-
-              </div>
-            );
-          })}
+    <div className="space-app-main">
+      <div className="space-app-container wrapper">
+        <div className="space-selections">
+          <Button onClick={handleSolar} variant="outlined">
+            Explore Our Solar System
+          </Button>
+          <Button onClick={handleGeneralSpace} variant="outlined">
+            General Space Facts
+          </Button>
+        </div>
+        {goToSolar && <OurSolarSystem data={solarSystem} />}
+        {goToGeneral && <GeneralSpace />}
       </div>
     </div>
   );

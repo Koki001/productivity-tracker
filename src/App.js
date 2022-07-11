@@ -24,7 +24,7 @@ function App() {
   }, []);
   return (
     <div className="app-container">
-      {loggedIn?.uid && <AvatarHeader />}
+      {loggedIn !== null ? <AvatarHeader /> : null}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<SignUp />} />

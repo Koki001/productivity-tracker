@@ -93,73 +93,75 @@ const AvatarHeader = function () {
   // console.log(location.pathname)
   return (
     <div className="logged-as">
-      <div className="user-info">
-        {/* <p>{currentUser?.displayName}</p> */}
-        <Avatar
-          onClick={handleAvatarSettings}
-          alt={currentUser?.displayName}
-          src={imageURL}
-        />
-        <Dialog open={open} onClose={handleClose}>
-          <DialogTitle>User Settings</DialogTitle>
-          <DialogContentText>
-            <CloseIcon id="close-avatar-settings" onClick={handleClose} />
-            <input
-              accept="image/*"
-              style={{ display: "none" }}
-              id="upload-profile-photo"
-              multiple
-              type="file"
-              onChange={handleImageUpload}
-            />
-            <label htmlFor="upload-profile-photo">
-              <Button component="span" variant="outlined">
-                Profile Photo
-              </Button>
-            </label>
-          </DialogContentText>
-        </Dialog>
+      <div className="wrapper">
+        <div className="user-info">
+          {/* <p>{currentUser?.displayName}</p> */}
+          <Avatar
+            onClick={handleAvatarSettings}
+            alt={currentUser?.displayName}
+            src={imageURL}
+          />
+          <Dialog open={open} onClose={handleClose}>
+            <DialogTitle>User Settings</DialogTitle>
+            <DialogContentText>
+              <CloseIcon id="close-avatar-settings" onClick={handleClose} />
+              <input
+                accept="image/*"
+                style={{ display: "none" }}
+                id="upload-profile-photo"
+                multiple
+                type="file"
+                onChange={handleImageUpload}
+              />
+              <label htmlFor="upload-profile-photo">
+                <Button component="span" variant="outlined">
+                  Profile Photo
+                </Button>
+              </label>
+            </DialogContentText>
+          </Dialog>
+        </div>
+        <div className="quick-links">
+          <Breadcrumbs aria-label="breadcrumb">
+            <Link
+              underline="hover"
+              color="inherit"
+              sx={
+                location.pathname === "/home"
+                  ? { borderBottom: "3px solid gray" }
+                  : null
+              }
+              onClick={quickLinkHome}
+            >
+              Home
+            </Link>
+            <Link
+              underline="hover"
+              color="inherit"
+              sx={
+                location.pathname === "/home/to-do"
+                  ? { borderBottom: "3px solid gray" }
+                  : null
+              }
+              onClick={quickLinkToDo}
+            >
+              To-Do
+            </Link>
+            <Link onClick={quickLinkSpaceApp} underline="hover" color="inherit">
+              Space App
+            </Link>
+            <Link underline="hover" color="inherit">
+              Coming Soon
+            </Link>
+            <Link underline="hover" color="inherit">
+              Coming Soon
+            </Link>
+          </Breadcrumbs>
+        </div>
+        <Button onClick={logOut} variant="contained">
+          Sign Out
+        </Button>
       </div>
-      <div className="quick-links">
-        <Breadcrumbs aria-label="breadcrumb">
-          <Link
-            underline="hover"
-            color="inherit"
-            sx={
-              location.pathname === "/home"
-                ? { borderBottom: "3px solid gray" }
-                : null
-            }
-            onClick={quickLinkHome}
-          >
-            Home
-          </Link>
-          <Link
-            underline="hover"
-            color="inherit"
-            sx={
-              location.pathname === "/home/to-do"
-                ? { borderBottom: "3px solid gray" }
-                : null
-            }
-            onClick={quickLinkToDo}
-          >
-            To-Do
-          </Link>
-          <Link onClick={quickLinkSpaceApp} underline="hover" color="inherit">
-            Space App
-          </Link>
-          <Link underline="hover" color="inherit">
-            Coming Soon
-          </Link>
-          <Link underline="hover" color="inherit">
-            Coming Soon
-          </Link>
-        </Breadcrumbs>
-      </div>
-      <Button onClick={logOut} variant="contained">
-        Sign Out
-      </Button>
     </div>
   );
 };
