@@ -37,8 +37,12 @@
   justify-content: space-between;
   align-items: flex-start;
   border-bottom: 1px solid white;
+  div {
+    display: flex;
+  }
   h2 {
     margin: 0;
+    margin-right: 50px;
   }
   ul {
     display: flex;

@@ -14,7 +14,7 @@ const OurSolarSystem = function (props) {
   const [planetSize, setPlanetSize] = useState(null);
   const [planetTempC, setPlanetTempC] = useState(null);
   const [planetTempF, setPlanetTempF] = useState(null);
-  const [planetMoons, setPlanetMoons] = useState(null)
+  const [planetMoons, setPlanetMoons] = useState(null);
 
   useEffect(
     function () {
@@ -47,6 +47,9 @@ const OurSolarSystem = function (props) {
   const handleNeptune = function () {
     setCallPlanet("neptune");
   };
+  const handleSun = function () {
+    setCallPlanet("soleil");
+  };
   useEffect(
     function () {
       if (callPlanet !== "") {
@@ -75,37 +78,43 @@ const OurSolarSystem = function (props) {
               maximumFractionDigits: 0,
             })
           );
-          if (res.data.moons){
-            setPlanetMoons(res.data.moons.length)
-          } else if (res.data.moons === null){
-            setPlanetMoons("No moons")
+          if (res.data.moons) {
+            setPlanetMoons(res.data.moons.length);
+          } else if (res.data.moons === null) {
+            setPlanetMoons("No moons");
           }
         });
       }
     },
     [callPlanet]
   );
-  console.log(planet);
   return (
     <div className="solar-system-container">
       <div className="solar-nav">
+        <div>
+          <h2>Star</h2>
+          <ul>
+            <li onClick={handleSun}>Sun</li>
+          </ul>
+        </div>
+        <div>
         <h2>Planets</h2>
-        <ul>
-          <li onClick={handleMercury}>Mercury</li>
-          <li onClick={handleVenus}>Venus</li>
-          <li onClick={handleEarth}>Earth</li>
-          <li onClick={handleMars}>Mars</li>
-          <li onClick={handleJupiter}>Jupiter</li>
-          <li onClick={handleSaturn}>Saturn</li>
-          <li onClick={handleUranus}>Uranus</li>
-          <li onClick={handleNeptune}>Neptune</li>
-        </ul>
+          <ul>
+            <li onClick={handleMercury}>Mercury</li>
+            <li onClick={handleVenus}>Venus</li>
+            <li onClick={handleEarth}>Earth</li>
+            <li onClick={handleMars}>Mars</li>
+            <li onClick={handleJupiter}>Jupiter</li>
+            <li onClick={handleSaturn}>Saturn</li>
+            <li onClick={handleUranus}>Uranus</li>
+            <li onClick={handleNeptune}>Neptune</li>
+          </ul>
+        </div>
       </div>
-      {(planet !== []) & (planetSize !== null) ? (
+      {(planet !== []) & (planetSize !== null) & (planet.id !== "soleil") ? (
         <div className="planet-info">
           <div className="planet-info-top">
-            {/* <img src={`/assets/solarSystem/${planet.englishName}.png`} alt="" /> */}
-            <PlanetIframe name={planet.englishName}/>
+            <PlanetIframe name={planet.englishName} />
             <div className="nasa-description">
               <p>{NasaPlanetDescriptions[planet.englishName]}</p>
             </div>
@@ -126,6 +135,32 @@ const OurSolarSystem = function (props) {
             </h4>
             <h4>
               Number of moons: <br /> {planetMoons}
+            </h4>
+          </div>
+        </div>
+      ) : (planetSize !== null) & (planet?.id === "soleil") ? (
+        <div className="planet-info">
+          <div className="planet-info-top">
+            <PlanetIframe name={planet.englishName} />
+            <div className="nasa-description">
+              <p>{NasaPlanetDescriptions[planet.englishName]}</p>
+            </div>
+          </div>
+          <div className="planet-info-bottom">
+            <h4>
+              Star Type: <br /> Yellow Dwarf
+            </h4>
+            <h4>
+              Age: <br /> 4.603 billion years
+            </h4>
+            <h4>
+              Diameter: <br /> {planetSize} km
+            </h4>
+            <h4>
+              Corona temperature: <br /> 2,000,000°C / 3,500,000°F
+            </h4>
+            <h4>
+              Surface Temperature: <br /> 5,500°C / 10,000°F
             </h4>
           </div>
         </div>

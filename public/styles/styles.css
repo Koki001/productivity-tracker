@@ -367,7 +367,6 @@ html {
   height: 100px;
   position: fixed;
   top: 0;
-  z-index: 10000;
   background-color: rgba(0, 0, 0, 0.247);
 }
 .logged-as .MuiBreadcrumbs-li {
@@ -632,8 +631,12 @@ html {
   align-items: flex-start;
   border-bottom: 1px solid white;
 }
+.solar-nav div {
+  display: flex;
+}
 .solar-nav h2 {
   margin: 0;
+  margin-right: 50px;
 }
 .solar-nav ul {
   display: flex;

@@ -68,7 +68,7 @@ const LandingPage = function () {
 
   return (
     <div className="landing-page wrapper">
-      <h1>PlanPal</h1>
+      <h1>PersonalPal</h1>
       <div className="login-container">
         <h3>Already have an account?</h3>
 

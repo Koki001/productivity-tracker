@@ -1,6 +1,6 @@
 const PlanetIframe = function (props) {
   return (
-    <div className="planet-iframe">
+    <div crossOrigin="anonymous" className="planet-iframe">
       {props.name === "Mercury" ? (
         <iframe
           src="https://solarsystem.nasa.gov/gltf_embed/2369"
@@ -53,6 +53,13 @@ const PlanetIframe = function (props) {
       ) : props.name === "Neptune" ? (
         <iframe
           src="https://solarsystem.nasa.gov/gltf_embed/2364"
+          width="100%"
+          height="450px"
+          frameborder="0"
+        />
+      ) : props.name === "Sun" ? (
+        <iframe
+          src="https://solarsystem.nasa.gov/gltf_embed/2352"
           width="100%"
           height="450px"
           frameborder="0"
