@@ -368,6 +368,7 @@ html {
   position: fixed;
   top: 0;
   background-color: rgba(0, 0, 0, 0.247);
+  z-index: 100;
 }
 .logged-as .MuiBreadcrumbs-li {
   transition: all 0.3s;
@@ -458,10 +459,13 @@ html {
 
 .to-do-container {
   height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   padding-top: 10%;
+  background-color: burlywood;
+  animation: fadeIn 1s;
 }
 
 .add-chore-container {
@@ -485,6 +489,7 @@ html {
 
 .to-do-content {
   min-width: 500px;
+  width: 40%;
 }
 .to-do-content .to-do-title {
   margin: 0;
@@ -588,6 +593,14 @@ html {
   width: 85%;
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
 .space-app-main {
   display: flex;
   width: 100%;
@@ -599,6 +612,7 @@ html {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  animation: fadeIn 1s;
 }
 
 .space-app-container {
@@ -711,7 +725,7 @@ html {
 
 @keyframes fadeIn {
   0% {
-    opacity: 0;
+    opacity: 0%;
   }
   100% {
     opacity: 100%;

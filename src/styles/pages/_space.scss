@@ -9,6 +9,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  animation: fadeIn 1s;
 }
 .space-app-container {
   display: flex;
@@ -114,7 +115,7 @@
 
 @keyframes fadeIn {
   0% {
-    opacity: 0;
+    opacity: 0%;
   }
   100% {
     opacity: 100%;

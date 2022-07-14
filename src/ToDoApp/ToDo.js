@@ -188,7 +188,7 @@ const ToDo = function () {
   );
 
   return (
-    <div className="to-do-container wrapper">
+    <div className="to-do-container">
       <Dialog open={openEdit} onClose={handleClose}>
         <DialogContent sx={{ width: "100%" }}>
           <DialogContentText>
@@ -208,7 +208,7 @@ const ToDo = function () {
           <Button onClick={handleCloseConfirm}>Confirm</Button>
         </DialogActions>
       </Dialog>
-      <div className="to-do-content">
+      <div className="to-do-content wrapper">
         <h2 className="to-do-title">TO DO LIST</h2>
         <DateDisplay />
         <ul ref={ulRef}>

@@ -68,7 +68,7 @@ const AvatarHeader = function () {
   };
   useEffect(
     function () {
-      if (currentUser.photoURL) {
+      if (currentUser.photoURL !== null) {
         getDownloadURL(sRef(storage, currentUser.uid + "/profile-photo")).then(
           function (url) {
             setImageURL(url);
